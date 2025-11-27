@@ -18,7 +18,7 @@ git+https://github.com/ahoazure/aho_data_import_wizard.git@main # translated int
 msal<=1.9.0 #library needed for OIDC
 mysqlclient<=2.0.1
 Pillow>=6.0.0
-python==3.10.12
+python>=3.10.12
 python-dotenv<=0.17.1
 pytz>=2018.5
 tablib[all]
