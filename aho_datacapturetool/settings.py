@@ -26,6 +26,7 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1','dct.aho.afro.who.int',
 				'af-aho-datacapturetool-dev.azurewebsites.net',
 				'af-aho-dct-f8hnfwbcb4e6c0bg.westeurope-01.azurewebsites.net',
                 'f54e-196-216-86-84.ngrok-free.app']
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",") if os.getenv("DJANGO_ALLOWED_HOSTS") else []
 
 # Application definition
 INSTALLED_APPS = [
