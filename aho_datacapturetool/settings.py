@@ -18,15 +18,19 @@ SECRET_KEY = os.environ['SECRET']
 
 DEBUG = True # Debug must be set to False in production for security purposes
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','dct.aho.afro.who.int',
-                'af-aho-datacapturetool.azurewebsites.net',
-				'af-aho-datacapturetool-test.azurewebsites.net',
-                'af-aho-datacapturetool-stage.azurewebsites.net',
-				'af-aho-datacapturetool-stagex.azurewebsites.net',
-				'af-aho-datacapturetool-dev.azurewebsites.net',
-				'af-aho-dct-f8hnfwbcb4e6c0bg.westeurope-01.azurewebsites.net',
-                'f54e-196-216-86-84.ngrok-free.app']
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",") if os.getenv("DJANGO_ALLOWED_HOSTS") else []
+env_hosts = os.getenv("DJANGO_ALLOWED_HOSTS", "")
+ALLOWED_HOSTS = [h.strip() for h in env_hosts.split(",") if h.strip()] or [
+    # fallback statique si la variable n'est pas fournie
+    'localhost','127.0.0.1','dct.aho.afro.who.int',
+    'af-aho-datacapturetool.azurewebsites.net',
+    'af-aho-datacapturetool-test.azurewebsites.net',
+    'af-aho-datacapturetool-stage.azurewebsites.net',
+    'af-aho-datacapturetool-stagex.azurewebsites.net',
+    'af-aho-datacapturetool-dev.azurewebsites.net',
+    'af-aho-dct-f8hnfwbcb4e6c0bg.westeurope-01.azurewebsites.net',
+    'f54e-196-216-86-84.ngrok-free.app',
+]
+
 
 # Application definition
 INSTALLED_APPS = [
